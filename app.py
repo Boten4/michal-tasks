@@ -51,7 +51,7 @@ def add_new_task():
         except Exception as e:
             st.error(f"אופס, היתה בעיה בחיבור: {e}")
 
-ddef update_status(row_index, current_status):
+def update_status(row_index, current_status):
     """עדכון סטטוס משימה בגיליון"""
     try:
         sh = get_worksheet()
