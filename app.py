@@ -73,7 +73,7 @@ def update_status(row_index, current_status):
 # --- הממשק הראשי ---
 
 st.title("משימות למיכל 💪")
-st.write("הלוח המשותף שלנו - כל מה שקורה פה, נשמר ב-Google Sheets!")
+
 
 # תיבת הוספה
 st.text_input("הוסיפי משימה חדשה:", key="new_task_input", on_change=add_new_task)
