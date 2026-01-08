@@ -1,6 +1,10 @@
 import streamlit as st
 import gspread
 from google.oauth2.service_account import Credentials
+import time  # <--- תוסיפי את השורה הזאת!
+import streamlit as st
+import gspread
+from google.oauth2.service_account import Credentials
 
 # הגדרות דף ועיצוב
 st.set_page_config(page_title="משימות למיכל", page_icon="✅")
@@ -47,12 +51,11 @@ def add_new_task():
         except Exception as e:
             st.error(f"אופס, היתה בעיה בחיבור: {e}")
 
-def update_status(row_index, current_status):
+ddef update_status(row_index, current_status):
     """עדכון סטטוס משימה בגיליון"""
     try:
         sh = get_worksheet()
         # גוגל שיטס מתחיל משורה 1, והכותרת היא שורה 1.
-        # לכן המשימה הראשונה (אינדקס 0) נמצאת בשורה 2.
         cell_row = row_index + 2
         cell_col = 2  # עמודה B היא הסטטוס
         
@@ -62,6 +65,7 @@ def update_status(row_index, current_status):
         if new_value == "TRUE":
             st.balloons()
             st.toast("אלופה! מחקתי מהרשימה 🎉")
+            time.sleep(2)  # <--- הנה הקסם: מחכים 2 שניות כדי לראות את הבלונים
             
     except Exception as e:
         st.error(f"שגיאה בעדכון: {e}")
